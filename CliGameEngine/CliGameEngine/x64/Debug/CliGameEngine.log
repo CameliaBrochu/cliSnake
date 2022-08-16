@@ -1,3 +1,0 @@
-﻿  CliGameEngine.cpp
-D:\workspace\cliGameEngine\CliGameEngine\CliGameEngine\CliGameEngine.cpp(62,105): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data
-  CliGameEngine.vcxproj -> D:\workspace\cliGameEngine\CliGameEngine\x64\Debug\CliGameEngine.exe
