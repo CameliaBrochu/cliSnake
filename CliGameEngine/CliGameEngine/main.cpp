@@ -4,7 +4,7 @@
 #include <Windows.h>
 #include <WinUser.h>
 
-class demoGameEngine : public cliGE::CliGameEngine
+class demoGame : public cliGE::CliGameEngine
 {
 public:
 	using CliGameEngine::CliGameEngine;
@@ -45,7 +45,7 @@ private:
 
 int main() {
 
-	demoGameEngine demo(120, 40);
+	demoGame demo(120, 40);
 	demo.start();
 
 	return 0;
