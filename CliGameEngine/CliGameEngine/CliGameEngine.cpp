@@ -4,13 +4,12 @@
 #include <WinUser.h>
 
 cliGE::CliGameEngine::CliGameEngine(size_t screenWidth, size_t screenHeight)
-	:m_screenWidth(screenWidth),m_screenHeight(screenHeight)
+	:m_screenWidth(screenWidth),m_screenHeight(screenHeight),m_screen(new wchar_t[m_screenWidth * m_screenHeight])
 {
 }
 
 void cliGE::CliGameEngine::start()
 {
-	wchar_t* screen = new wchar_t[m_screenWidth * m_screenHeight];
 	HANDLE hConsole = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0, NULL, CONSOLE_TEXTMODE_BUFFER, NULL);
 	SetConsoleActiveScreenBuffer(hConsole);
 
@@ -22,48 +21,32 @@ void cliGE::CliGameEngine::start()
 
 	DWORD dwBytesWritten = 0;
 
-
-	size_t pX = 0;
-	size_t pY = 0;
-
 	onGameLoad();
 
 	while (true) {
 
-		// Init screen with spaces
+		// Clear screen with spaces
 		for (size_t i = 0; i < m_screenWidth * m_screenHeight; i++)
 		{
-			screen[i] = L' ';
+			m_screen[i] = L' ';
 		}
 
+		onGameUpdate();
+		onGameDraw(m_screen);
 
-		// A : 0x41
-		if (GetAsyncKeyState(0x41)) {
-			--pX;
-		}
-
-		// D : 0x44
-		if (GetAsyncKeyState(0x44)) {
-			++pX;
-		}
-
-		// W : 0x57
-		if (GetAsyncKeyState(0x57)) {
-			--pY;
-		}
-
-		// S : 0x53
-		if (GetAsyncKeyState(0x53)) {
-			++pY;
-		}
-
-		screen[pX + (pY * m_screenWidth)] = L'P';
-
-		WriteConsoleOutputCharacter(hConsole, screen, m_screenWidth * m_screenHeight, { 0,0 }, &dwBytesWritten);
+		WriteConsoleOutputCharacter(hConsole, m_screen, m_screenWidth * m_screenHeight, { 0,0 }, &dwBytesWritten);
 		Sleep(16);
 	}
 }
 
 void cliGE::CliGameEngine::onGameLoad()
+{
+}
+
+void cliGE::CliGameEngine::onGameUpdate()
+{
+}
+
+void cliGE::CliGameEngine::onGameDraw(wchar_t*)
 {
 }

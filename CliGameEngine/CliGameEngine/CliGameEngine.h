@@ -3,13 +3,16 @@ namespace cliGE {
 	class CliGameEngine
 	{
 	public:
-		CliGameEngine(size_t screenWidth, size_t screenHeight);
+		explicit CliGameEngine(size_t screenWidth, size_t screenHeight);
 		void start();
-		void onGameLoad();
+		virtual void onGameLoad();
+		virtual void onGameUpdate();
+		virtual void onGameDraw(wchar_t*);
 
 	private:
 		size_t m_screenWidth;
 		size_t m_screenHeight;
+		wchar_t* m_screen;
 	};
 }
 
