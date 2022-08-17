@@ -18,6 +18,7 @@ void cliGE::CliGameEngine::start()
 	cInfo->dwSize = 1;
 	cInfo->bVisible = false;
 	SetConsoleCursorInfo(hConsole, cInfo);
+	delete cInfo;
 
 	DWORD dwBytesWritten = 0;
 
@@ -25,18 +26,24 @@ void cliGE::CliGameEngine::start()
 
 	while (true) {
 
+		onGameUpdate();
+
 		// Clear screen with spaces
 		for (size_t i = 0; i < m_screenWidth * m_screenHeight; i++)
 		{
 			m_screen[i] = L' ';
 		}
 
-		onGameUpdate();
-		onGameDraw(m_screen);
+		onGameDraw();
 
 		WriteConsoleOutputCharacter(hConsole, m_screen, m_screenWidth * m_screenHeight, { 0,0 }, &dwBytesWritten);
 		Sleep(16);
 	}
+}
+
+void cliGE::CliGameEngine::writeCharAt(wchar_t wchar, int x, int y)
+{
+	m_screen[x + (y * m_screenWidth)] = wchar;
 }
 
 void cliGE::CliGameEngine::onGameLoad()
@@ -47,6 +54,6 @@ void cliGE::CliGameEngine::onGameUpdate()
 {
 }
 
-void cliGE::CliGameEngine::onGameDraw(wchar_t*)
+void cliGE::CliGameEngine::onGameDraw()
 {
 }
