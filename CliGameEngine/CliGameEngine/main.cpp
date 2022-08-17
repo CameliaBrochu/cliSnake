@@ -35,8 +35,8 @@ public:
 		}
 	}
 
-	void onGameDraw(wchar_t* screen) {
-		screen[pX + (pY * 120)] = L'P';
+	void onGameDraw() {
+		writeCharAt(L'P', pX, pY);
 	}
 private:
 	size_t pX;
