@@ -41,9 +41,9 @@ void cliGE::CliGameEngine::start()
 	}
 }
 
-void cliGE::CliGameEngine::writeCharAt(wchar_t wchar, int x, int y)
+void cliGE::CliGameEngine::writeCharAt(char p_char, int x, int y)
 {
-	m_screen[x + (y * m_screenWidth)] = wchar;
+	m_screen[x + (y * m_screenWidth)] = p_char;
 }
 
 void cliGE::CliGameEngine::onGameLoad()

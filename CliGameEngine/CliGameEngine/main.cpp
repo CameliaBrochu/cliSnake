@@ -36,7 +36,7 @@ public:
 	}
 
 	void onGameDraw() {
-		writeCharAt(L'P', pX, pY);
+		writeCharAt('P', pX, pY);
 	}
 private:
 	size_t pX;

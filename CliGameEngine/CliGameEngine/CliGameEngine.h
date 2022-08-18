@@ -8,7 +8,7 @@ namespace cliGE {
 		virtual void onGameLoad();
 		virtual void onGameUpdate();
 		virtual void onGameDraw();
-		void writeCharAt(wchar_t wchar,int x,int y);
+		void writeCharAt(char p_char,int x,int y);
 
 	private:
 		size_t m_screenWidth;
