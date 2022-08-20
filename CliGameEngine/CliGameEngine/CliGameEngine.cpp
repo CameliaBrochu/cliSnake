@@ -46,14 +46,7 @@ void cliGE::CliGameEngine::writeCharAt(char p_char, int x, int y)
 	m_screen[x + (y * m_screenWidth)] = p_char;
 }
 
-void cliGE::CliGameEngine::onGameLoad()
+bool cliGE::CliGameEngine::keyPressed(int keyCode)
 {
-}
-
-void cliGE::CliGameEngine::onGameUpdate()
-{
-}
-
-void cliGE::CliGameEngine::onGameDraw()
-{
+	return GetAsyncKeyState(keyCode);
 }

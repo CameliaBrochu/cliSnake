@@ -5,10 +5,11 @@ namespace cliGE {
 	public:
 		explicit CliGameEngine(size_t screenWidth, size_t screenHeight);
 		void start();
-		virtual void onGameLoad();
-		virtual void onGameUpdate();
-		virtual void onGameDraw();
+		virtual void onGameLoad() = 0;
+		virtual void onGameUpdate() = 0;
+		virtual void onGameDraw() = 0;
 		void writeCharAt(char p_char,int x,int y);
+		bool keyPressed(int keyCode);
 
 	private:
 		size_t m_screenWidth;
