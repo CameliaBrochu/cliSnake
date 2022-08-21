@@ -20,15 +20,41 @@ public:
 		this->snake.addToBody(test2);
 		Coords test3 = { 8,9 };
 		this->snake.addToBody(test3);
+		Coords test4 = { 8,8 };
+		this->snake.addToBody(test4);
 	}
 	void onGameUpdate() {
 
+		// A : 0x41
+		if (keyPressed(0x41)) {
+			this->snake.setDirection(LEFT);
+		}
+		// D : 0x44
+		if (keyPressed(0x44)) {
+			this->snake.setDirection(RIGHT);
+		}
+		// W : 0x57
+		if (keyPressed(0x57)) {
+			this->snake.setDirection(UP);
+		}
+		// S : 0x53
+		if (keyPressed(0x53)) {
+			this->snake.setDirection(DOWN);
+		}
+
+		this->snake.moveSnake();
 	}
 
 	void onGameDraw() {
 		for (auto it = snake.getBody().begin(); it != snake.getBody().end(); it++)
 		{
-			writeCharAt('s', it->x, it->y);
+			if (it == snake.getBody().begin()) {
+				writeCharAt('S', it->x, it->y);
+			}
+			else {
+				writeCharAt('s', it->x, it->y);
+			}
+			
 		}
 	}
 private:

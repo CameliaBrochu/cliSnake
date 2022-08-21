@@ -1,7 +1,7 @@
 #pragma once
 #include <list>
 
-enum Direction {UP, RIGHT, BOTTOM, LEFT};
+enum Direction {UP, RIGHT, DOWN, LEFT};
 
 struct Coords 
 {
@@ -14,9 +14,10 @@ public:
 	Direction getDirection() const;
 	void setDirection(Direction d);
 
-
-	const std::list<Coords>& getBody() const;
+	std::list<Coords>& getBody();
 	void addToBody(Coords c);
+
+	void moveSnake();
 
 
 private:
